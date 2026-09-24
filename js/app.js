@@ -19,25 +19,50 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMobileDrawer() {
   const hamburgerBtns = document.querySelectorAll('.hamburger-pill-btn');
   const drawer = document.getElementById('mobile-nav-drawer');
-  const closeBtn = document.getElementById('btn-close-drawer');
+  const closeBtns = document.querySelectorAll('#btn-close-drawer, .drawer-close-btn');
 
   if (!drawer) return;
 
+  function openDrawer() {
+    drawer.classList.add('open');
+    document.body.classList.add('drawer-open');
+    hamburgerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    document.body.classList.remove('drawer-open');
+    hamburgerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+  }
+
   hamburgerBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      drawer.classList.add('open');
-    });
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-haspopup', 'dialog');
+    btn.addEventListener('click', openDrawer);
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('open');
-    });
-  }
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeDrawer);
+  });
 
   drawer.addEventListener('click', (e) => {
     if (e.target === drawer) {
-      drawer.classList.remove('open');
+      closeDrawer();
+    }
+  });
+
+  // Close drawer when any drawer navigation link is tapped
+  const drawerLinks = drawer.querySelectorAll('.drawer-link');
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeDrawer();
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
     }
   });
 }

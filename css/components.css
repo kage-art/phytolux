@@ -125,6 +125,40 @@
   gap: var(--space-2);
 }
 
+/* Mobile Hamburger Pill Button Base */
+.hamburger-pill-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  background: var(--slate-100);
+  color: var(--green-950);
+  border: 1px solid var(--slate-200);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-pill-btn:hover,
+.hamburger-pill-btn:active {
+  background: var(--lime-500);
+  color: var(--green-950);
+  border-color: var(--lime-600);
+  transform: scale(1.05);
+}
+
+.hamburger-pill-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
 @media (min-width: 1100px) {
   #btn-desktop-dealer {
     display: inline-flex !important;
@@ -234,22 +268,83 @@
   color: #ffffff;
   box-shadow: 0 3px 8px rgba(31, 154, 85, 0.25);
 }
-.btn-whatsapp:hover {
+.btn-whatsapp:hover,
+.btn-whatsapp:active {
   background-color: #178347;
   color: #ffffff;
   transform: translateY(-1px);
 }
 
+.btn-primary {
+  background-color: var(--green-800);
+  color: #ffffff;
+  border-color: var(--green-900);
+}
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--green-700);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.btn-primary .btn-arrow-circle {
+  background: var(--lime-500);
+}
+.btn-primary .btn-arrow-circle svg {
+  stroke: var(--green-950);
+}
+
+.btn-secondary {
+  background-color: var(--slate-100);
+  color: var(--slate-800);
+  border-color: var(--slate-300);
+}
+.btn-secondary:hover,
+.btn-secondary:active {
+  background-color: var(--slate-200);
+  color: var(--slate-900);
+  border-color: var(--slate-400);
+}
+
 .btn-sm {
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: var(--font-size-xs);
+  min-height: 38px;
 }
 .btn-lg {
   padding: 0.95rem 2rem;
   font-size: var(--font-size-base);
+  min-height: 48px;
 }
 .btn-block {
   width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-green {
+  background-color: var(--green-100);
+  color: var(--green-900);
+  border: 1px solid var(--green-200);
+}
+
+.crop-pill {
+  display: inline-block;
+  font-size: 11px;
+  background: var(--earth-100);
+  color: var(--earth-900);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin: 2px;
 }
 
 /* ==========================================================================
@@ -1386,7 +1481,7 @@
    ========================================================================== */
 .resources-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-6);
   margin-bottom: var(--space-16);
 }
@@ -1714,4 +1809,136 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+/* ==========================================================================
+   Calculator Result Card Styles
+   ========================================================================== */
+.calc-result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.calc-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--green-200);
+}
+
+.calc-dose-num {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--green-800);
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Accessible Native Dialog Modals
+   ========================================================================== */
+dialog.phytolux-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: #ffffff;
+  padding: var(--space-8);
+  max-width: min(92vw, 680px);
+  width: 100%;
+  max-height: 88dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 24px 70px rgba(10, 31, 19, 0.3);
+  z-index: var(--z-modal);
+}
+
+dialog.phytolux-modal::backdrop {
+  background: rgba(10, 31, 19, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+dialog.phytolux-modal[open] {
+  animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.modal-close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--slate-100);
+  color: var(--slate-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid var(--slate-200);
+  transition: all var(--transition-fast);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:active {
+  background: var(--lime-500);
+  color: var(--green-950);
+}
+
+/* ==========================================================================
+   Responsive Section Grid Utilities
+   ========================================================================== */
+.advisory-process-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.advisory-mosaic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  max-height: 280px;
+  box-shadow: var(--shadow-md);
+}
+
+.dual-vision-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+.articles-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }

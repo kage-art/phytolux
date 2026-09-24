@@ -7,38 +7,66 @@ window.PhytoluxModal = (function() {
   let productModal;
   let generalModal;
 
+  function ensureGeneralModal() {
+    if (!generalModal) {
+      generalModal = document.getElementById('general-modal');
+    }
+    if (!generalModal) {
+      generalModal = document.createElement('dialog');
+      generalModal.id = 'general-modal';
+      generalModal.className = 'phytolux-modal';
+      generalModal.innerHTML = `
+        <div class="modal-header">
+          <h3 id="general-modal-title" style="font-size: 1.25rem; color: var(--green-950); margin: 0;">Notice</h3>
+          <button type="button" class="modal-close-btn" data-close-modal aria-label="Close dialog">&times;</button>
+        </div>
+        <div id="general-modal-body" style="line-height: 1.6; color: var(--slate-700);"></div>
+      `;
+      document.body.appendChild(generalModal);
+      bindModalEvents(generalModal);
+    }
+    return generalModal;
+  }
+
+  function bindModalEvents(modal) {
+    if (!modal) return;
+    
+    // Close on backdrop click
+    modal.addEventListener('click', (event) => {
+      const rect = modal.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        closeAllModals();
+      }
+    });
+
+    // Close on ESC
+    modal.addEventListener('cancel', () => {
+      document.body.classList.remove('modal-open');
+      cleanUrlHash();
+    });
+
+    // Close buttons inside modal
+    modal.querySelectorAll('[data-close-modal]').forEach(btn => {
+      btn.addEventListener('click', closeAllModals);
+    });
+  }
+
   function init() {
     productModal = document.getElementById('product-detail-modal');
     generalModal = document.getElementById('general-modal');
 
-    // Close buttons on modals
+    if (productModal) bindModalEvents(productModal);
+    if (generalModal) bindModalEvents(generalModal);
+
+    // Global close buttons on page
     document.querySelectorAll('[data-close-modal]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        closeAllModals();
-      });
-    });
-
-    // Close on backdrop click (native dialog light dismiss)
-    [productModal, generalModal].forEach(modal => {
-      if (modal) {
-        modal.addEventListener('click', (event) => {
-          const rect = modal.getBoundingClientRect();
-          const isInDialog = (
-            rect.top <= event.clientY &&
-            event.clientY <= rect.top + rect.height &&
-            rect.left <= event.clientX &&
-            event.clientX <= rect.left + rect.width
-          );
-          if (!isInDialog) {
-            closeAllModals();
-          }
-        });
-
-        // Close on ESC key
-        modal.addEventListener('cancel', () => {
-          cleanUrlHash();
-        });
-      }
+      btn.addEventListener('click', closeAllModals);
     });
 
     // Listen to hash change for deep-linking
@@ -55,6 +83,7 @@ window.PhytoluxModal = (function() {
   function closeAllModals() {
     if (productModal && productModal.open) productModal.close();
     if (generalModal && generalModal.open) generalModal.close();
+    document.body.classList.remove('modal-open');
     cleanUrlHash();
   }
 
@@ -150,6 +179,7 @@ window.PhytoluxModal = (function() {
       };
     }
 
+    document.body.classList.add('modal-open');
     productModal.showModal();
     window.location.hash = `#product-${product.id}`;
   }
@@ -238,12 +268,14 @@ window.PhytoluxModal = (function() {
   }
 
   function openGeneralModal(title, content) {
-    if (!generalModal) return;
+    const modal = ensureGeneralModal();
+    if (!modal) return;
     const modalTitle = document.getElementById('general-modal-title');
     const modalBody = document.getElementById('general-modal-body');
     if (modalTitle) modalTitle.textContent = title;
     if (modalBody) modalBody.innerHTML = content;
-    generalModal.showModal();
+    document.body.classList.add('modal-open');
+    modal.showModal();
   }
 
   function checkHashRoute() {

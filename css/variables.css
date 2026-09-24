@@ -1,0 +1,161 @@
+/**
+ * Phytolux Bio Science - Design System Tokens
+ * Inspired by Modern Agricultural Tech UI: Forest Greens, Sprout Lime Accents, Warm Earthen Canvas
+ * Strictly natural, organic, high-contrast. Zero purple or neon AI cyber colors.
+ */
+
+:root {
+  /* Brand Deep Forest Greens */
+  --green-950: #0a1f13;
+  --green-900: #0d2818;
+  --green-850: #113420;
+  --green-800: #15452a;
+  --green-700: #1b5e39;
+  --green-600: #23784a;
+  --green-500: #2c935b;
+  --green-400: #42af74;
+  --green-300: #71cf9d;
+  --green-200: #a7e5c4;
+  --green-100: #d8f5e5;
+  --green-50:  #edf9f2;
+
+  /* Fresh Sprout Lime Accent Spectrum (From Reference UI Inspiration) */
+  --lime-500: #bcf038;
+  --lime-400: #cbfa4c;
+  --lime-600: #a4d924;
+  --lime-700: #8bbd16;
+  --lime-50:  #f6fde8;
+  --lime-dark-text: #132405;
+
+  /* Natural Earth & Warm Sand Canvas */
+  --earth-900: #33261a;
+  --earth-800: #4e3c2b;
+  --earth-700: #6f573f;
+  --earth-600: #8f7253;
+  --earth-500: #ad8d68;
+  --earth-300: #d6be9f;
+  --earth-200: #e8d9c5;
+  --earth-100: #f4ede1;
+  --earth-50:  #faf8f3;
+
+  /* Harvest Amber & Sun (Warm Crop Accents) */
+  --amber-700: #b86b16;
+  --amber-600: #cf7c1c;
+  --amber-500: #e39129;
+  --amber-100: #faeed9;
+  --amber-50:  #fdf8ee;
+
+  /* Botanical Slates for High-Contrast Typography */
+  --slate-950: #0e1712;
+  --slate-900: #142018;
+  --slate-800: #223227;
+  --slate-700: #35473a;
+  --slate-600: #4f6455;
+  --slate-500: #6b8171;
+  --slate-400: #8fa596;
+  --slate-300: #b9cbc0;
+  --slate-200: #dbe5df;
+  --slate-100: #eef3f0;
+  --slate-50:  #f7faf8;
+
+  /* Semantic Color Mappings */
+  --color-primary-dark: var(--green-950);
+  --color-primary: var(--green-800);
+  --color-primary-hover: var(--green-700);
+  --color-primary-light: var(--green-100);
+  --color-primary-surface: var(--green-50);
+
+  --color-accent-lime: var(--lime-500);
+  --color-accent-lime-hover: var(--lime-400);
+  --color-accent-amber: var(--amber-600);
+
+  --color-bg-page: var(--earth-50);
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f3f6f3;
+  --color-bg-dark: var(--green-950);
+  --color-bg-dark-card: #12281b;
+
+  --color-text-main: var(--slate-900);
+  --color-text-muted: var(--slate-600);
+  --color-text-light: var(--slate-500);
+  --color-text-inverse: #ffffff;
+  --color-text-inverse-muted: var(--slate-300);
+
+  --color-border: #dfe8e2;
+  --color-border-subtle: #ebf1ed;
+  --color-border-focus: var(--green-600);
+
+  /* Typography */
+  --font-family-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 1.875rem;   /* 30px */
+  --font-size-3xl: 2.25rem;    /* 36px */
+  --font-size-4xl: 2.875rem;   /* 46px */
+  --font-size-5xl: 3.75rem;    /* 60px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.55;
+  --line-height-relaxed: 1.7;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* Modern Curved Radii (From UI References) */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(10, 31, 19, 0.04);
+  --shadow-sm: 0 2px 6px rgba(10, 31, 19, 0.06);
+  --shadow-md: 0 6px 16px rgba(10, 31, 19, 0.08);
+  --shadow-lg: 0 12px 30px rgba(10, 31, 19, 0.1);
+  --shadow-xl: 0 24px 50px rgba(10, 31, 19, 0.14);
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-max: 1260px;
+  --header-height: 84px;
+  --z-header: 1000;
+  --z-drawer: 1100;
+  --z-modal: 1200;
+  --z-toast: 1300;
+
+  /* Reference UI Accents */
+  --lime-glow: rgba(188, 240, 56, 0.45);
+  --green-glow: rgba(21, 69, 42, 0.35);
+  --card-border-subtle: #e5ede7;
+  --card-border-hover: #bcf038;
+}

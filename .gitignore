@@ -1,0 +1,16 @@
+# Ignore Skill sets and related repositories
+antigravity-awesome-skills/
+*skills*
+*skillset*
+
+# Operating System & Editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+
+# Dependency & Temporary files
+node_modules/
+.temp/

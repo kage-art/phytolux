@@ -1,0 +1,283 @@
+/**
+ * Phytolux Bio Science - Responsive & Mobile Drawer Styles
+ */
+
+@media (max-width: 1100px) {
+  .nav-pill-group {
+    display: none; /* Hide wide desktop pill list on tablet */
+  }
+
+  .hamburger-pill-btn {
+    display: flex !important;
+  }
+
+  .bento-quad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split-mission-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .story-bento-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Greenstead responsive grid handling */
+  .greenstead-products-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .products-intro-col {
+    position: static;
+  }
+  .greenstead-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dark-insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Inner Pages Responsive Layout */
+  .bento-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .bento-grid > [style*="span 7"],
+  .bento-grid > [style*="span 8"],
+  .bento-grid > [style*="span 6"],
+  .bento-grid > [style*="span 5"],
+  .bento-grid > [style*="span 4"] {
+    grid-column: 1 / -1 !important;
+  }
+  .dealer-section-layout,
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .flow-step-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    top: 10px;
+    padding: 0 10px;
+  }
+
+  .site-nav-island {
+    padding: 6px 10px;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  .top-ticker-bar {
+    display: none; /* Hide ticker on small mobile to save vertical space */
+  }
+
+  .rotating-stamp-badge {
+    display: none; /* Hide rotating seal on narrow mobile */
+  }
+
+  .hero-top-intro {
+    padding-right: 0;
+  }
+
+  .hero-card-frame {
+    height: 360px;
+    border-radius: var(--radius-xl);
+  }
+
+  .hero-floating-card-bottom-left {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: none;
+    padding: 12px 16px;
+  }
+  .hero-floating-card-bottom-left p {
+    display: none;
+  }
+
+  .hero-carousel-controls {
+    display: none;
+  }
+
+  .stat-thumbnail-group {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .stat-thumb-col {
+    border-right: none;
+    border-bottom: 1px solid var(--card-border-subtle);
+    padding-right: 0;
+    padding-bottom: var(--space-4);
+  }
+  .stat-thumb-col:last-child {
+    border-bottom: none;
+  }
+
+  .greenstead-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-insights-section {
+    padding: var(--space-10) var(--space-6);
+    border-radius: var(--radius-xl);
+  }
+
+  .bento-quad-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-feature-section {
+    padding: var(--space-10) var(--space-6);
+    border-radius: var(--radius-xl);
+  }
+
+  .cta-banner-card {
+    padding: var(--space-10) var(--space-6);
+    border-radius: var(--radius-xl);
+  }
+
+  .drone-banner-section {
+    min-height: 380px;
+    padding: var(--space-10) var(--space-5);
+    border-radius: var(--radius-xl);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+
+  .product-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-whatsapp span {
+    display: none;
+  }
+}
+
+/* Mobile Hamburger Pill Button */
+.hamburger-pill-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--slate-100);
+  color: var(--green-950);
+  border: 1px solid var(--slate-200);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hamburger-pill-btn:hover {
+  background: var(--lime-500);
+}
+.hamburger-pill-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Mobile Slide-in Drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 31, 19, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-drawer);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.mobile-nav-drawer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 360px;
+  background: #ffffff;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-drawer.open .drawer-panel {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--slate-200);
+  padding-bottom: var(--space-4);
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  overflow-y: auto;
+}
+
+.drawer-link {
+  padding: 10px 16px;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--slate-800);
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+}
+
+.drawer-link:hover, .drawer-link.active {
+  background: var(--lime-500);
+  color: var(--green-950);
+}
